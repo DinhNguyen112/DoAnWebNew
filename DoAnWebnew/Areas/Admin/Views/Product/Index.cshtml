@@ -1,0 +1,120 @@
+﻿@model IEnumerable<DoAnWebnew.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+@section Styles{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables/dataTables.bootstrap.css">
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box ">
+            <div class="box-header">
+                <a href="/Admin/Product/Create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Thêm mới</a>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ID_SP)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HINHANH)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TENSP)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GIA)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HANSUDUNG)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COSAN)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MOTA)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ID_LOAI)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID_SP)
+                                </td>
+                                <td>
+
+                                    <img src = "@item.HINHANH" width="100" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TENSP)
+                                </td>
+                                <td>
+                                    
+                                    @Html.FormatValue(item.GIA,"{0:#,###}")
+                                </td>
+
+                                <td>
+                                   @Html.FormatValue(item.HANSUDUNG,"{0:dd/MM/yyyy}")
+                                  
+                                </td>
+                                <td>
+                                    @if (item.COSAN == true)
+                                    {
+                                        <span>Còn hàng</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Hết hàng</span>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MOTA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID_LOAI)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.ID_SP }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID_SP }, new { @class = "text-danger" })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                    
+                @*    <tfoot>
+                        <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                        </tr>
+                    </tfoot>*@
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+@section Scripts{
+    <!-- DataTables -->
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables/dataTables.alphabetSearch.js"></script>
+}

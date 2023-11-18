@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="hero-area hero-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 offset-lg-2 text-center">
+                <div class="hero-text">
+                    <div class="hero-text-tablecell">
+                        <p class="subtitle">Fresh & Organic</p>
+                        <h1>Delicious Seasonal Fruits</h1>
+                        <div class="hero-btns">
+                            <a href="shop.html" class="boxed-btn">Hoa quả của cửa hàng</a>
+                            <a href="contact.html" class="bordered-btn">Liên hệ với chúng tôi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="list-section pt-80 pb-80">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="list-box d-flex align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Miễn phí giao hàng</h3>
+                        <p>Khi đặt hàng trên 80.000đ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="list-box d-flex align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <div class="content">
+                        <h3>24/7 Hỗ trợ</h3>
+                        <p>Hỗ trợ cả ngày</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="list-box d-flex justify-content-start align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Đền bù</h3>
+                        <p>Nhận hoàn tiền trong vòng 3 ngày</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">Tất cả</li>
+                        <li data-filter=".DauTay">Dâu Tây</li>
+                        <li data-filter=".Chuoi">Chuối</li>
+                        <li data-filter=".Chanh">Chanh</li>
+                        <li data-filter=".Buoi">Bưởi</li>
+                        <li data-filter=".Nho">Nho</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row product-lists">
+            @{
+                List<DoAnWebnew.Models.SanPham> sanPham = (List<DoAnWebnew.Models.SanPham>)ViewBag.sanPham;
+                for (int i = 0; i < sanPham.Count; i++)
+                {
+                    if (sanPham[i].COSAN == true)
+                    {
+
+
+                    <div class="col-lg-4 col-md-6 text-center DauTay" data-filter=".DauTay">
+
+
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="@sanPham[i].HINHANH" alt=""></a>
+                        </div>
+                        <h4 class="product-name">@sanPham[i].TENSP</h4>
+                        <p class="product-price">@Html.FormatValue(sanPham[i].GIA, "{0:#,###}") <span> 1Kg</span></p>
+                        <p class="product-price"><span>Hạn sử dụng : @Html.FormatValue(sanPham[i].HANSUDUNG, "{0:dd/MM/yyyy}")</span></p>
+                        <div><a href="/Cart/AddToCart/@sanPham[i].ID_SP" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a></div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center Chuoi">
+
+
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="@sanPham[i].HINHANH" alt=""></a>
+                        </div>
+                        <h4 class="product-name">@sanPham[i].TENSP</h4>
+                        <p class="product-price">@Html.FormatValue(sanPham[i].GIA, "{0:#,###}") <span> 1Kg</span></p>
+                        <p class="product-price"><span>Hạn sử dụng : @Html.FormatValue(sanPham[i].HANSUDUNG, "{0:dd/MM/yyyy}")</span></p>
+                        <div><a href="/Cart/AddToCart/@sanPham[i].ID_SP" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a></div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center Chanh">
+
+
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="@sanPham[i].HINHANH" alt=""></a>
+                        </div>
+                        <h4 class="product-name">@sanPham[i].TENSP</h4>
+                        <p class="product-price">@Html.FormatValue(sanPham[i].GIA, "{0:#,###}") <span> 1Kg</span></p>
+                        <p class="product-price"><span>Hạn sử dụng : @Html.FormatValue(sanPham[i].HANSUDUNG, "{0:dd/MM/yyyy}")</span></p>
+                        <div><a href="/Cart/AddToCart/@sanPham[i].ID_SP" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a></div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center Buoi">
+
+
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="@sanPham[i].HINHANH" alt=""></a>
+                        </div>
+                        <h4 class="product-name">@sanPham[i].TENSP</h4>
+                        <p class="product-price">@Html.FormatValue(sanPham[i].GIA, "{0:#,###}") <span> 1Kg</span></p>
+                        <p class="product-price"><span>Hạn sử dụng : @Html.FormatValue(sanPham[i].HANSUDUNG, "{0:dd/MM/yyyy}")</span></p>
+                        <div><a href="/Cart/AddToCart/@sanPham[i].ID_SP" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a></div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 text-center Nho" data-filter=".Nho">
+
+
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="@sanPham[i].HINHANH" alt=""></a>
+                        </div>
+                        <h4 class="product-name">@sanPham[i].TENSP</h4>
+                        <p class="product-price">@Html.FormatValue(sanPham[i].GIA, "{0:#,###}") <span> 1Kg</span></p>
+                        <p class="product-price"><span>Hạn sử dụng : @Html.FormatValue(sanPham[i].HANSUDUNG, "{0:dd/MM/yyyy}")</span></p>
+                        <div><a href="/Cart/AddToCart/@sanPham[i].ID_SP" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a></div>
+
+                    </div>
+                        }
+                    }
+                }
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a  class="active" href="#">1</a></li>
+                        <li><a  href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end products -->
